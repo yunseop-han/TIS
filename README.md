@@ -1,2 +1,1 @@
-# -
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+# 늦었을때 시작하는 TIS: Today I Solved
