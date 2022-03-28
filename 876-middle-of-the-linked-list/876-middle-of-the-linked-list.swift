@@ -10,24 +10,14 @@
  */
 class Solution {
     func middleNode(_ head: ListNode?) -> ListNode? {
-        var iterator = head
-        var count = 0
-        while iterator?.next != nil {
-            iterator = iterator?.next
-            count += 1
+        var slow = head
+        var fast = head
+        
+        while fast?.next != nil {
+            slow = slow?.next
+            fast = fast?.next?.next
         }
         
-        let middle = (count - 1) / 2
-        var resultCount = 0
-        var head = head
-        while head?.next != nil {
-            head = head?.next
-            if resultCount == middle {
-                return head
-            } else {
-                resultCount += 1
-            }
-        }
-        return head
+        return slow
     }
 }
