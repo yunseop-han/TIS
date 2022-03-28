@@ -12,25 +12,22 @@ class Solution {
     func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
         // list의 count
         var head = head
+        var slow = head
+        var fast = head
         
-        var countNode = head
-        var count = 0
-        while countNode != nil {
-            count += 1
-            countNode = countNode?.next
-        }
-        guard n <= count else { return nil }
-        guard n != count else { return head?.next }
-        // list - n 까지 가서
-        // 지우고 합침
-        var targetNode = head
-        for i in stride(from: 0, to: count - n, by: 1) {
-            if i == count - n - 1 {
-                var nextNode = targetNode?.next?.next
-                targetNode!.next = nextNode
+        for _ in stride(from: 0, to: n, by: 1) {
+            fast = fast?.next
+            if fast == nil {
+                head = head?.next
             }
-            targetNode = targetNode!.next
         }
+        
+        while fast?.next != nil {
+            slow = slow?.next
+            fast = fast?.next    
+        }
+        
+        slow?.next = slow?.next?.next
         
         return head
     }
